@@ -8,8 +8,6 @@ const App = (singlePlant, item) => {
   const [cart, setCart] = useState([]); /** {id, image, name, quantity} */
 
   const addToCart = (singlePlant) => {
-    console.log(cart);
-    
     const itemIsInCart = cart.some(objInCart => objInCart.id === singlePlant.id);
     const objInCart = cart.find((objInCart) => objInCart.id === singlePlant.id);
 
@@ -21,8 +19,7 @@ const App = (singlePlant, item) => {
       setCart(
         cart.map((sameItem) => {
           if(sameItem.id === objInCart.id) {
-            console.log(sameItem);
-            return { ...sameItem, quantity: sameItem.quantity + 1}
+            return {...sameItem, quantity: sameItem.quantity + 1}
           } else {
             return sameItem
           }
@@ -30,6 +27,27 @@ const App = (singlePlant, item) => {
       );
     }
   };
+
+  const subFromCart = (item) => {
+    const itemIsInCart = cart.some(objInCart => objInCart.id === item.id);
+    const objInCart = cart.find((objInCart) => objInCart.id === item.id);
+
+    if (itemIsInCart === true) {
+      setCart(
+        cart.map((sameItem) => {
+          if ((sameItem.id === objInCart.id) && (sameItem.quantity > 0)) {
+              return {...sameItem, quantity: sameItem.quantity - 1}            
+          } else {
+            // console.log(`your basket is empty`);
+            return sameItem
+          };
+        })
+      );
+    } else {
+      
+    }
+  };
+
 
   return (
     <>
@@ -47,6 +65,7 @@ const App = (singlePlant, item) => {
           item={item}
           singlePlant={singlePlant}
           addToCart={addToCart}
+          subFromCart={subFromCart}
         />
       </main>
       
