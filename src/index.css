@@ -1,0 +1,24 @@
+main {
+  background-color: lightgrey;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  justify-items: center;
+}
+
+header {
+  display: grid;
+  justify-content: center;
+}
+
+.plants {
+  background-color: beige;
+  width: 100%;
+}
+
+.inList {
+  display: grid;
+}
+
+.add2Cart {
+  width: 7em;
+}
