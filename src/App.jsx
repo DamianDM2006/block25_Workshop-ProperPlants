@@ -3,24 +3,33 @@ import PLANTS from "./data.js";
 import AllPlantsList from "./plants/AllPlantsList.jsx";
 import ShoppingCart from "./cart/ShoppingCart.jsx";
 
-const App = (singlePlant) => {
+const App = (singlePlant, item) => {
   const [allPlants, setAllPlants] = useState(PLANTS);
   const [cart, setCart] = useState([]); /** {id, image, name, quantity} */
 
   const addToCart = (singlePlant) => {
-    console.log(singlePlant);
     console.log(cart);
-
-    const itemIsInCart = cart.some(objInCart => objInCart.id === singlePlant.id);
     
-    console.log(`itemIsInCart`, itemIsInCart);
+    const itemIsInCart = cart.some(objInCart => objInCart.id === singlePlant.id);
+    const objInCart = cart.find((objInCart) => objInCart.id === singlePlant.id);
 
     if (itemIsInCart === false) {
       const newItem = { ...singlePlant, quantity: 1 };
-      console.log(newItem);
       setCart([...cart, newItem]);
     }
-    // else {console.log(`i got passed it`)}
+    else {
+      /* const isItem = { ...objInCart, quantity: objInCart.quantity + 1 }; */
+      setCart(
+        cart.map((sameItem) => {
+          if(sameItem.id === objInCart.id) {
+            console.log(sameItem);
+            return { ...sameItem, quantity: sameItem.quantity + 1}
+          } else {
+            return sameItem
+          }
+        })
+      );
+    }
   };
 
   return (
@@ -34,7 +43,12 @@ const App = (singlePlant) => {
           singlePlant={singlePlant}
           addToCart={addToCart}
         />
-        <h2>Cart</h2>
+        <ShoppingCart
+          cart={cart}
+          item={item}
+          singlePlant={singlePlant}
+          addToCart={addToCart}
+        />
       </main>
       
     </>

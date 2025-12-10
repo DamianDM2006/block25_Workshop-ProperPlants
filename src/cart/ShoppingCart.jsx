@@ -1,15 +1,15 @@
-const ShoppingCart = ( {cart}) => {
+const ShoppingCart = ( {cart, item, addToCart} ) => {
   return (
-    <>
+    <section className="cart">
       {cart.map((item) => (
         <div key={item.id}>
-          <img src={item.image} />
+          <p>{item.image}</p>
           <p>Quantity:  {item.quantity}</p>
-          <button idName="subtract">-</button>
-          <button idName="add">+</button>
+          <button className="subtract">-</button>
+          <button className="add">+</button>
         </div>
       ))}
-    </>
+    </section>
   )
 };
 
