@@ -5,9 +5,23 @@ import ShoppingCart from "./cart/ShoppingCart.jsx";
 
 const App = (singlePlant) => {
   const [allPlants, setAllPlants] = useState(PLANTS);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]); /** {id, image, name, quantity} */
 
-  const addToCart = (singlePlant) => {console.log(singlePlant)};
+  const addToCart = (singlePlant) => {
+    console.log(singlePlant);
+    console.log(cart);
+
+    // const itemIsInCart = true;
+    
+    // console.log(`itemIsInCart`, itemIsInCart);
+
+    if (itemIsInCart === false) {
+      const newItem = { ...singlePlant, quantity: 1 };
+      console.log(newItem);
+      setCart([...cart, newItem]);
+    }
+    // else {console.log(`i got passed it`)}
+  };
 
   return (
     <>

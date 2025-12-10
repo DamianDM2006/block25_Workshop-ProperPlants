@@ -5,6 +5,8 @@ const ShoppingCart = ( {cart}) => {
         <div key={item.id}>
           <img src={item.image} />
           <p>Quantity:  {item.quantity}</p>
+          <button idName="subtract">-</button>
+          <button idName="add">+</button>
         </div>
       ))}
     </>
