@@ -15,10 +15,17 @@ header {
   width: 100%;
 }
 
-.inList {
+.list {
   display: grid;
+  
 }
 
 .add2Cart {
   width: 7em;
+}
+
+.inList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: min-content;
 }

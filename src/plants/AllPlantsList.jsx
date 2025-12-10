@@ -1,22 +1,22 @@
-import PLANTS from "../data.js";
 
-const AllPlantsList = () => {
-  const allPlants = PLANTS;
-  console.log(`allPlants`, allPlants);
+
+const AllPlantsList = ({ allPlants, addToCart }) => {
   return(
     <section className="plants">
       <h2>Available Plants</h2>
-        <nav>
-          <ul>
+        <nav className="list">
+          <ul className="inList">
             {allPlants.map((singlePlant) => (
               <li
                 key={singlePlant.id}
-                className="inList"
+                
                 >
                 {singlePlant.image}
                 {singlePlant.name}
-                <button className="add2Cart">
-
+                <button
+                  className="add2Cart"
+                  onClick={() => { addToCart(singlePlant)}}
+                >
                   Add to Cart
                 </button>
               </li>
