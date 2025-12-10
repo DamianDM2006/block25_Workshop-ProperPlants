@@ -11,9 +11,9 @@ const App = (singlePlant) => {
     console.log(singlePlant);
     console.log(cart);
 
-    // const itemIsInCart = true;
+    const itemIsInCart = cart.some(objInCart => objInCart.id === singlePlant.id);
     
-    // console.log(`itemIsInCart`, itemIsInCart);
+    console.log(`itemIsInCart`, itemIsInCart);
 
     if (itemIsInCart === false) {
       const newItem = { ...singlePlant, quantity: 1 };
