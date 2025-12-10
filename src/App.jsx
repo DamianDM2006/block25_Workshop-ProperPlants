@@ -18,7 +18,6 @@ const App = (singlePlant, item) => {
       setCart([...cart, newItem]);
     }
     else {
-      /* const isItem = { ...objInCart, quantity: objInCart.quantity + 1 }; */
       setCart(
         cart.map((sameItem) => {
           if(sameItem.id === objInCart.id) {

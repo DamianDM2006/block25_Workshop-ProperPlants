@@ -6,7 +6,10 @@ const ShoppingCart = ( {cart, item, addToCart} ) => {
           <p>{item.image}</p>
           <p>Quantity:  {item.quantity}</p>
           <button className="subtract">-</button>
-          <button className="add">+</button>
+          <button
+            className="add"
+            onClick={() => { addToCart(item)}}
+          >+</button>
         </div>
       ))}
     </section>
