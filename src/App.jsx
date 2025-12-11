@@ -8,20 +8,21 @@ const App = (singlePlant, item) => {
   const [cart, setCart] = useState([]); /** {id, image, name, quantity} */
 
   const addToCart = (singlePlant) => {
-    const itemIsInCart = cart.some(objInCart => objInCart.id === singlePlant.id);
+    const itemIsInCart = cart.some(
+      (objInCart) => objInCart.id === singlePlant.id
+    );
     const objInCart = cart.find((objInCart) => objInCart.id === singlePlant.id);
 
     if (itemIsInCart === false) {
       const newItem = { ...singlePlant, quantity: 1 };
       setCart([...cart, newItem]);
-    }
-    else {
+    } else {
       setCart(
         cart.map((sameItem) => {
-          if(sameItem.id === objInCart.id) {
-            return {...sameItem, quantity: sameItem.quantity + 1}
+          if (sameItem.id === objInCart.id) {
+            return { ...sameItem, quantity: sameItem.quantity + 1 };
           } else {
-            return sameItem
+            return sameItem;
           }
         })
       );
@@ -29,25 +30,27 @@ const App = (singlePlant, item) => {
   };
 
   const subFromCart = (item) => {
-    const itemIsInCart = cart.some(objInCart => objInCart.id === item.id);
+    const itemIsInCart = cart.some((objInCart) => objInCart.id === item.id);
     const objInCart = cart.find((objInCart) => objInCart.id === item.id);
 
-    if (itemIsInCart === true) {
+    if ((itemIsInCart === true) && (objInCart.quantity > 0)) {
       setCart(
         cart.map((sameItem) => {
-          if ((sameItem.id === objInCart.id) && (sameItem.quantity > 0)) {
-              return {...sameItem, quantity: sameItem.quantity - 1}            
+          if (sameItem.id === objInCart.id && sameItem.quantity > 0) {
+            return { ...sameItem, quantity: sameItem.quantity - 1 };
           } else {
-            // console.log(`your basket is empty`);
-            return sameItem
-          };
+            return sameItem;
+          }
         })
       );
-    } else {
-      
+    };
+
+    if (objInCart.quantity <= 0) {
+      setCart(
+        cart.filter((removeItem) => removeItem.quantity !== 0)
+      )
     }
   };
-
 
   return (
     <>
@@ -68,7 +71,6 @@ const App = (singlePlant, item) => {
           subFromCart={subFromCart}
         />
       </main>
-      
     </>
   );
 };
