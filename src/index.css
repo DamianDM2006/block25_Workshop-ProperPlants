@@ -17,15 +17,30 @@ header {
 
 .list {
   display: grid;
-  
 }
 
 .add2Cart {
   width: 7em;
+  height: 21px;
 }
 
 .inList {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: min-content;
+  list-style-type: none;
+}
+
+li {
+  display: grid;
+  justify-items: center;
+  padding: 1em;
+}
+
+.cart {
+  display: grid;
+  grid-template-rows: auto;
+  justify-content: center;
+  background-color: whitesmoke;
+  width: 100%;
 }

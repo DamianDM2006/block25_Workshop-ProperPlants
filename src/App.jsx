@@ -33,7 +33,7 @@ const App = (singlePlant, item) => {
     const itemIsInCart = cart.some((objInCart) => objInCart.id === item.id);
     const objInCart = cart.find((objInCart) => objInCart.id === item.id);
 
-    if ((itemIsInCart === true) && (objInCart.quantity > 0)) {
+    if (itemIsInCart === true && objInCart.quantity > 0) {
       setCart(
         cart.map((sameItem) => {
           if (sameItem.id === objInCart.id && sameItem.quantity > 0) {
@@ -43,12 +43,10 @@ const App = (singlePlant, item) => {
           }
         })
       );
-    };
+    }
 
     if (objInCart.quantity <= 0) {
-      setCart(
-        cart.filter((removeItem) => removeItem.quantity !== 0)
-      )
+      setCart(cart.filter((removeItem) => removeItem.quantity !== 0));
     }
   };
 
